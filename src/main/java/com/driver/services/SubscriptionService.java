@@ -23,12 +23,12 @@ public class SubscriptionService {
     @Autowired
     UserRepository userRepository;
 
-    public Integer buySubscription(SubscriptionEntryDto subscriptionEntryDto) throws Exception {
+    public Integer buySubscription(SubscriptionEntryDto subscriptionEntryDto) {
         //We need to buy subscription and save its relevant subscription to the db and return the finalAmount
         // Save The subscription Object into the Db and return the total Amount that user has to pay
         Optional<User> userOptional = userRepository.findById(subscriptionEntryDto.getUserId());
-        if(!userOptional.isPresent())
-            throw new Exception("User Not Found.");
+//        if(!userOptional.isPresent())
+//            throw new Exception("User Not Found.");
         User user = userOptional.get();
 
         SubscriptionType subscriptionType  = subscriptionEntryDto.getSubscriptionType();
